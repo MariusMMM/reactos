@@ -2,13 +2,17 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Button from './components/Button/Button';
-import Button2 from './components/Button2/Button';
 
 function App() {
   return (
     <div>
-      <Button/>
-      <Button2/>
+      <Button text="Mon button" />
+      <Button bgColor='teal'>Un bouton</Button>
+      <Button color='yellow'><div>ABC</div></Button>
+      <Button>
+        <img src='http://marius-m.alwaysdata.net/culturemelee/img/facebook.png' alt='img'/>
+        <div>Hello</div>
+      </Button>
       <Button/>
     </div>
   );

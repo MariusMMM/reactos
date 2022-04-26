@@ -4,4 +4,17 @@
     background-color: blue;
     color:#fff;
     border-radius: 5px;
+    box-shadow: 25px 25px 25px black;
+}
+
+.clicked {
+    background-color: black !important;
+    border:2px solid black;
+    box-shadow: 5px 5px 25px black !important;
+}
+
+.hovered {
+    background-color: grey !important;
+    border:2px solid black;
+    box-shadow: 15px 15px 25px black !important;
 }

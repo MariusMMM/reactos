@@ -1,21 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Button from './components/Button/Button';
+import './App.css';
 
-function App() {
-  return (
-    <div>
-      <Button text="Mon button" />
-      <Button bgColor='teal'>Un bouton</Button>
-      <Button color='yellow'><div>ABC</div></Button>
-      <Button>
-        <img src='http://marius-m.alwaysdata.net/culturemelee/img/facebook.png' alt='img'/>
-        <div>Hello</div>
-      </Button>
-      <Button/>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      compteur:0,
+      uneData:"salut",
+    }
+  };
+  componentDidMount(){
+    console.log("composant monté");
+  }
+  componentDidUpdate(prevProps,prevState){
+    console.log(prevProps,this.props);
+    console.log("%c%s", "font-size:24px; color:red", '--------------');
+    console.log(prevState,this.state);
+    //console.log(arguments);
+  }
+  render(){
+    return (
+      <div className='App' data-testid='App'>
+        <div>Valeur du compteur : {this.state.compteur}</div>
+        
+        <Button bgColor='skyblue' 
+        onButtonClicked={()=>{
+          this.setState({compteur:this.state.compteur+1});
+          }}
+          >
+          +1
+          </Button>
+          {this.state.compteur <= 0 ? null : <Button>-1</Button>}
+        
+        
+      </div>
+    );
+  }
 }
 
 export default App;

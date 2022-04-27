@@ -10,7 +10,7 @@ const Button =(props)=>{
         if (isClicked) {
             setTimeout(() => {
                 setClicked(false);
-            }, 1000);
+            }, 500);
         }
     }, [isClicked, isHovered]);
     return (
@@ -20,6 +20,7 @@ const Button =(props)=>{
             onClick={(evt)=>{
                 //console.log(evt);
                 setClicked(true);
+                props.onButtonClicked('Hello');
                 //console.log("isClicked", isClicked);
             }}
             onMouseOver={(evt)=>{
@@ -43,6 +44,7 @@ const Button =(props)=>{
 Button.prototypes={
     bgColor: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    onButtonClicked: PropTypes.func.isRequired,
 }
 Button.defaultProps={
     bgColor: "red",

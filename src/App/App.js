@@ -1,42 +1,46 @@
-import React from 'react';
-import Button from './components/Button/Button';
-import './App.css';
+import React, {useState} from 'react'
+import FlexH from './components/layout/FlexH/FlexH'
+import FlexW from './components/layout/FlexW/FlexW'
 
-class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      compteur:0,
-      uneData:"salut",
+const appInitialState={
+  meme:{
+    text:'react c cool',
+    x:20,
+    y:20,
+    fontSize:20,
+    fontWeight:'900',
+    color:'#ACB0A1',
+    imageId:0,
+    underline:true,
+    italic:false,
+    name:'mon 1er meme'
+  },
+  images:[
+    {
+      id:0,
+      name:'image',
+      url:'illus_51.jpg',
+      w:1100,
+      h:730
     }
-  };
-  componentDidMount(){
-    console.log("composant monté");
-  }
-  componentDidUpdate(prevProps,prevState){
-    console.log(prevProps,this.props);
-    console.log("%c%s", "font-size:24px; color:red", '--------------');
-    console.log(prevState,this.state);
-    //console.log(arguments);
-  }
-  render(){
-    return (
-      <div className='App' data-testid='App'>
-        <div>Valeur du compteur : {this.state.compteur}</div>
-        
-        <Button bgColor='skyblue' 
-        onButtonClicked={()=>{
-          this.setState({compteur:this.state.compteur+1});
-          }}
-          >
-          +1
-          </Button>
-          {this.state.compteur <= 0 ? null : <Button>-1</Button>}
-        
-        
-      </div>
-    );
-  }
+  ]
 }
 
-export default App;
+function App(props) {
+  const [state,setstate] = useState(appInitialState)
+  return (
+    <div className='App' style={{height:'90vh'}}>
+      <div>Header</div>
+      <div>Nav</div>
+      <FlexH>
+        <FlexW>
+        <div>Viewer</div>
+        <div>Editor</div>
+        </FlexW>
+      </FlexH>
+      <div>Footer</div>
+    </div>
+  )
+}
+
+export default App

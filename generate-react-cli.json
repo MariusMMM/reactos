@@ -38,7 +38,7 @@
       "withStory": true,
       "withLazy": false,
       "customTemplates":{
-        "component":"grc/function/TemplateName.js"
+        "component":"grc/layoutfunc/TemplateName.tsx"
       }
     }
   }

@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import style from './MemeSvgViewer.js';
 
-const MemeSvgViewerInitialState={};
+export const MemeSvgViewerInitialState={};
 const MemeSvgViewer=(props)=>{
-    const [state,setstate] = useState(MemeSvgViewerInitialState);
-    useEffect(()=>{
 
-    },[state])
 
     return (
-        <div className={style.MemeSvgViewer} data-testid='MemeSvgViewer'>
-            memeSvgViewer
-        </div>
+        <svg className={style.MemeSvgViewer} data-testid='MemeSvgViewer' viewBox={`0 O ${props.image?props.image.w:1000} ${props.image?props.image.h:1000}`}>
+            {props.image&&<image href={`/img/${props.image?.url}`} x={0} y={0} />}
+            <text 
+            x={props.meme.x} 
+            y={props.meme.y} 
+            fontSize={props.meme.fontSize} 
+            fontWeight={props.meme.fontWeight}
+            fontStyle={props.meme.italic?'italic':'normal'}
+            fill={props.meme.color}
+            textDecoration={props.meme.underline?'underline':'none'}
+            >
+            {props.meme.text}
+            </text>
+        </svg>
     );
 };
 
 MemeSvgViewer.propTypes = {
-
+    image: PropTypes.object,
+    meme: PropTypes.object.isRequired
 };
 
 MemeSvgViewer.defaultProps= {

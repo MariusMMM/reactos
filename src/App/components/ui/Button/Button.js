@@ -20,7 +20,8 @@ const Button =(props)=>{
             onClick={(evt)=>{
                 //console.log(evt);
                 setClicked(true);
-                props.onButtonClicked('Hello');
+        //if(undefined!==props.onButtonClicked && typeof props.onButtonClicked==='function')
+            props.onButtonClicked();
                 //console.log("isClicked", isClicked);
             }}
             onMouseOver={(evt)=>{
@@ -36,7 +37,6 @@ const Button =(props)=>{
         >
             {props.children}
             <br/>
-            {isClicked.toString()}
         </button>
     );
 
@@ -45,9 +45,11 @@ Button.prototypes={
     bgColor: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
     onButtonClicked: PropTypes.func.isRequired,
+    type:PropTypes.string.isRequired,
 }
 Button.defaultProps={
     bgColor: "red",
+    onButtonClicked:()=>{}
 }
 
 export default Button;
